@@ -1,0 +1,38 @@
+{
+  "name": "radar-tech",
+  "version": "1.0.0",
+  "description": "Scanner e filtro personalizado de vagas tech (LinkedIn, Gupy, Programathor, Remotar) focado em engenharia de software",
+  "type": "module",
+  "main": "cli.js",
+  "scripts": {
+    "scan": "node cli.js",
+    "scan:all": "node cli.js --all",
+    "scan:node": "node cli.js --query=\"Node.js Junior\"",
+    "scan:ts": "node cli.js --query=\"Backend TypeScript Junior\"",
+    "scan:fastify": "node cli.js --query=\"Fastify\"",
+    "scan:gupy": "node gupy-cli.js",
+    "scan:gupy:all": "node gupy-cli.js --all",
+    "scan:gupy:node": "node gupy-cli.js --query=\"Node\"",
+    "scan:gupy:backend": "node gupy-cli.js --query=\"Desenvolvedor Backend\"",
+    "scan:programathor": "node programathor-cli.js",
+    "scan:programathor:all": "node programathor-cli.js --all",
+    "scan:programathor:node": "node programathor-cli.js --query=\"Node.js\"",
+    "scan:programathor:backend": "node programathor-cli.js --query=\"Backend\"",
+    "scan:remotar": "node remotar-cli.js",
+    "scan:remotar:all": "node remotar-cli.js --all",
+    "scan:remotar:node": "node remotar-cli.js --query=\"Node\"",
+    "scan:remotar:backend": "node remotar-cli.js --query=\"Backend\"",
+    "terms": "node cli.js --list-terms",
+    "terms:gupy": "node gupy-cli.js --list-terms",
+    "terms:programathor": "node programathor-cli.js --list-terms",
+    "terms:remotar": "node remotar-cli.js --list-terms",
+    "report:all": "npm run report:gupy && npm run report:programathor && npm run report:remotar && npm run report:linkedin",
+    "report:linkedin": "node cli.js --all --export",
+    "report:gupy": "node gupy-cli.js --all --export",
+    "report:programathor": "node programathor-cli.js --all --export",
+    "report:remotar": "node remotar-cli.js --all --export"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
+}
