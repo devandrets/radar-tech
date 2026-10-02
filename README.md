@@ -111,6 +111,15 @@ node programathor-cli.js --all --days=30 --export
 
 ---
 
+## 🔁 Relatório geral
+
+```bash
+npm run report:all                 # 4 fontes, últimas 24h
+npm run report:all -- --days=7     # depois de dia(s) sem rodar: recupera a semana
+```
+
+> Termos de senioridade (`sênior`, `sr`, `especialista`, `principal`, `staff`, `tech lead`) só eliminam a vaga quando aparecem **no título**.
+
 ## 📁 Customização via Arquivos JSON
 
 Agora você pode customizar o radar sem precisar mexer no código do script:
@@ -128,6 +137,9 @@ Adicione qualquer empresa, consultoria ou fábrica de software que você **não*
   "Tata Consultancy Services"
 ]
 ```
+
+### 1.1 ✅ `company-allowlist.json` (Nunca Banir Automaticamente)
+Empresas aqui **nunca** entram na blacklist automática por ter publicado vaga em inglês. A vaga em inglês continua descartada, mas as vagas em português da empresa passam. Teste iniciado em 2026-10-01 com Onfly e consultorias (Stefanini, CI&T, Capgemini, FCamara). Se até 15/10 não aparecer nada útil delas, voltam para a blacklist.
 
 ### 2. ⛔ `terms-blacklist.json` (Termos e Stacks Proibidas)
 Configure termos, tecnologias indesejadas, senioridades incompatíveis ou modelos de trabalho que você deseja descartar sumariamente:

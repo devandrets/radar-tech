@@ -56,14 +56,38 @@
   "abap",
   "perl",
   "vba",
-  "senior",
-  "sênior",
-  "sr",
-  "sr.",
-  "especialista",
-  "tech lead",
-  "staff",
-  "principal",
+  {
+    "term": "senior",
+    "onlyTitle": true
+  },
+  {
+    "term": "sênior",
+    "onlyTitle": true
+  },
+  {
+    "term": "sr",
+    "onlyTitle": true
+  },
+  {
+    "term": "sr.",
+    "onlyTitle": true
+  },
+  {
+    "term": "especialista",
+    "onlyTitle": true
+  },
+  {
+    "term": "tech lead",
+    "onlyTitle": true
+  },
+  {
+    "term": "staff",
+    "onlyTitle": true
+  },
+  {
+    "term": "principal",
+    "onlyTitle": true
+  },
   "estágio",
   "estagiário",
   "trainee",
@@ -73,6 +97,12 @@
   "presencial",
   "híbrido",
   "vaga afirmativa para mulheres",
-  { "term": "pcd", "onlyTitle": true },
-  { "term": "pcds", "onlyTitle": true }
+  {
+    "term": "pcd",
+    "onlyTitle": true
+  },
+  {
+    "term": "pcds",
+    "onlyTitle": true
+  }
 ]

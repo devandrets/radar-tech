@@ -11,6 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const CANDIDATURAS_DIR = path.resolve(__dirname, 'candidaturas');
 const COMPANY_BLACKLIST_FILE = path.resolve(__dirname, 'company-blacklist.json');
+const COMPANY_ALLOWLIST_FILE = path.resolve(__dirname, 'company-allowlist.json');
 const TERMS_BLACKLIST_FILE = path.resolve(__dirname, 'terms-blacklist.json');
 const GUPY_SEARCH_TERMS_FILE = path.resolve(__dirname, 'gupy-search-terms.json');
 const SEARCH_TERMS_FILE = path.resolve(__dirname, 'search-terms.json');
@@ -49,10 +50,28 @@ function loadCompanyBlacklist() {
   }
 }
 
+function loadCompanyAllowlist() {
+  if (!fs.existsSync(COMPANY_ALLOWLIST_FILE)) {
+    return [];
+  }
+  try {
+    const parsed = JSON.parse(fs.readFileSync(COMPANY_ALLOWLIST_FILE, 'utf-8'));
+    return Array.isArray(parsed)
+      ? parsed.filter(c => typeof c === 'string' && c.trim().length > 0).map(c => c.trim().toLowerCase())
+      : [];
+  } catch (err) {
+    console.warn(`${colors.yellow}⚠️ Aviso: Não foi possível ler company-allowlist.json (${err.message}).${colors.reset}`);
+    return [];
+  }
+}
+
 function addCompanyToBlacklist(companyName, activeRules) {
   if (!companyName || typeof companyName !== 'string') return;
   const clean = companyName.trim();
   if (clean.length < 2) return;
+
+  // Empresas da allowlist nunca são banidas automaticamente (só a vaga em inglês é descartada)
+  if (loadCompanyAllowlist().some(c => clean.toLowerCase().includes(c))) return;
 
   const currentList = loadCompanyBlacklist();
   const existsInFile = currentList.some(c => c.toLowerCase() === clean.toLowerCase());
